@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {v4 as uuid} from 'uuid'
+import SongInput from './song-input.component'
 
 //useState hook returns two things the actual value of state object and 
 //accompanying function which is used to change or set values of state object. 
@@ -12,8 +13,8 @@ const SongList = () => {
         {id: uuid(), title: 'Lying from you'}
     ])
 
-    const addSong = () => {
-        setSongs([...songs, {id: uuid(), title: 'Smells like teen spirit'}])
+    const addSong = (title) => {
+        setSongs([...songs, {id: uuid(), title: title}])
     }
     return(
         <div className="song-list">
@@ -24,7 +25,7 @@ const SongList = () => {
                     )
                 })}
             </ul>
-            <button onClick={addSong}>Add a song</button>
+            <SongInput addSong= {addSong} />
         </div>
     )
 }
